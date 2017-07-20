@@ -21,7 +21,7 @@ async function submitToServer(data) {
 // action -> action
 const registerEpic = (action$, { getState, dispatch }) =>
   action$.ofType('REQUEST_SUBMIT')
-    .do(dispatch(startSubmit('contact')))
+    .do(() => dispatch(startSubmit('contact')))
     .mergeMap(action => 
       fromPromise(submitToServer(action.data))  
       .map(response => {
